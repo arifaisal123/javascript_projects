@@ -73,9 +73,7 @@ function startGame() {
 function gameCounter() {
     /*
     Inreases the gameNum counter by 1 till the end of the game
-    
     Returns: gameOver
-    
     */
     
     if (gameNum <= totalGameNum) {
@@ -91,7 +89,7 @@ function gameLogic() {
     Checks the logic before awarding the points to user or machine
     Returns: Winner of the particular game
     */
-    
+
     if (user_input === "rock") {
         if (machine_input === "scissor") {
             return "user_winner";
@@ -126,7 +124,8 @@ function gameLogic() {
         else if (machine_input === "paper") {
             return "user_winner";
         }
-    }            
+    }
+    return false;            
 }
 
 function pointCalc(gameLogic) {
@@ -156,15 +155,14 @@ function playGame() {
     let rps_list = ["rock", "paper", "scissor"];
 
     while (gameNum < totalGameNum) {
-        let user_input = prompt("Enter rock, paper, or scissor? ").toLowerCase();
+        user_input = prompt("Enter rock, paper, or scissor? ").toLowerCase();
         let random_num = Math.floor(Math.random() * 3);
-        let machine_input = rps_list[random_num];
+        machine_input = rps_list[random_num];
         console.log("----------------------------------------");
         console.log("You entered:", user_input);
         console.log("Machine entered:", machine_input);
         console.log("----------------------------------------");
-        
-        console.log(gameLogic());
+
         if (gameLogic() === "user_winner") {
             console.log("Great! You just got 1 point.");
         }
@@ -183,7 +181,8 @@ function playGame() {
         console.log("----------------------------------------");
         console.log("Total ", totalGameNum - gameNum, "Games left!");
         console.log("----------------------------------------");
-        
+    }
+
     if (user_points > machine_points) {
         console.log("Congratulations! You are the winner!");
     }
@@ -192,7 +191,6 @@ function playGame() {
     }
     else if (user_points === machine_points) {
         console.log("It is a DRAW!");
-    }
     }
 }
 
